@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import PageTransition from '@/components/layout/PageTransition';
 import DashboardHeader from '@/components/Dashboard/DashboardHeader';
 import HealthMonitor from '@/components/Dashboard/HealthMonitor';
@@ -7,6 +7,7 @@ import DiagnosticsPanel from '@/components/Dashboard/DiagnosticsPanel';
 import HealingCenter from '@/components/Dashboard/HealingCenter';
 import AnalyticsView from '@/components/Dashboard/AnalyticsView';
 import ConfigPanel from '@/components/Dashboard/ConfigPanel';
+import ChatBotDialog from '@/components/ChatBot/ChatBotDialog';
 
 const Index = () => {
   return (
@@ -36,6 +37,9 @@ const Index = () => {
             </p>
           </footer>
         </div>
+        
+        {/* Add the ChatBot component */}
+        <ChatBotDialog />
       </div>
     </PageTransition>
   );
