@@ -1,0 +1,209 @@
+
+/* Button animations */
+.btn-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Status indicator animation */
+.status-indicator {
+  display: inline-block;
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-active {
+  background-color: rgb(var(--color-success, 74, 222, 128));
+  box-shadow: 0 0 0 rgba(74, 222, 128, 0.4);
+  animation: status-pulse 2s infinite;
+}
+
+.status-warning {
+  background-color: rgb(var(--color-warning, 250, 204, 21));
+  box-shadow: 0 0 0 rgba(250, 204, 21, 0.4);
+  animation: status-pulse 2s infinite;
+}
+
+.status-error {
+  background-color: rgb(var(--color-error, 248, 113, 113));
+  box-shadow: 0 0 0 rgba(248, 113, 113, 0.4);
+  animation: status-pulse 2s infinite;
+}
+
+@keyframes status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--pulse-color, 74, 222, 128), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(var(--pulse-color, 74, 222, 128), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--pulse-color, 74, 222, 128), 0);
+  }
+}
+
+/* Card hover effect */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(var(--color-primary, 59, 130, 246), 0.3);
+  border-radius: 50%;
+  border-top-color: rgb(var(--color-primary, 59, 130, 246));
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Database connection animation */
+.db-connection {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.db-connection::before,
+.db-connection::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.db-connection::before {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--color-primary, 59, 130, 246), 0.1);
+  animation: ripple 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+
+.db-connection::after {
+  width: 70%;
+  height: 70%;
+  background-color: rgba(var(--color-primary, 59, 130, 246), 0.2);
+  animation: ripple 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite 0.3s;
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Text reveal animation */
+.text-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.text-reveal span {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: reveal 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@keyframes reveal {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Progress animation */
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Fade sequence for cards */
+.fade-sequence > * {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-in-up 0.5s forwards;
+}
+
+.fade-sequence > *:nth-child(1) { animation-delay: 0.1s; }
+.fade-sequence > *:nth-child(2) { animation-delay: 0.2s; }
+.fade-sequence > *:nth-child(3) { animation-delay: 0.3s; }
+.fade-sequence > *:nth-child(4) { animation-delay: 0.4s; }
+.fade-sequence > *:nth-child(5) { animation-delay: 0.5s; }
+.fade-sequence > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
